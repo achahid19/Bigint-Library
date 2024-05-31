@@ -7,9 +7,9 @@ int main(void)
 {
 	t_BigInt nombre1, nombre2, resultat;
 
-    if (initBigInt(&nombre1, "300") == false)
+    if (initBigInt(&nombre1, "00000") == false)
 		return (EXIT_FAILURE);
-    if (initBigInt(&nombre2, "400") == false)
+    if (initBigInt(&nombre2, "00000") == false)
 	{
 		freeInt(&nombre1);
 		return (EXIT_FAILURE);
@@ -38,6 +38,9 @@ int main(void)
 	/* ---------------------------Etape Une (DONE)------------------------ */
 
 	bigIntMult(&resultat, &nombre1, &nombre2);
+	printInt(&resultat);
+
+	karatsuba(&resultat, &nombre1, &nombre2);
 	printInt(&resultat);
 
 	freeInt(&nombre1);

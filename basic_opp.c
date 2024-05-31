@@ -31,10 +31,11 @@ void bigIntSub(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b)
 {
 	if (!a || !b || !resultat)
 		return ;
-	if (a->sign == b->sign && bigIntLessThan(b, a) == true)
+	if (a->sign == b->sign && (bigIntLessThan(b, a) == true
+		|| bigIntEgal(a, b) == true))
 		bigIntSameSign(resultat, a, b, true);
 	else
-		dprintf(2, "Erreur: Seul les nombres positives sont acceptes en substraction avec A >= B\n");
+		dprintf(2, "Erreur: Seul les nombres positives sont acceptes en susstraction avec A >= B\n");
 }
 
 /**
