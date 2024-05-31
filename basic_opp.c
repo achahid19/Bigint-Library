@@ -4,6 +4,7 @@ void	bigIntAdd(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b);
 void	bigIntSub(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b);
 bool	bigIntEgal(BigInt_ptr a, BigInt_ptr b);
 bool	bigIntLessThan(BigInt_ptr a, BigInt_ptr b);
+void	bigIntMult(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b);
 
 /**
  * bigIntAdd - check le signe des deux nombres et en fonction de ce dernier
@@ -100,4 +101,40 @@ bool	bigIntLessThan(BigInt_ptr a, BigInt_ptr b)
 		}
 	}
 	return (false);
+}
+
+/**
+ * bigIntMult -
+*/
+void	bigIntMult(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b)
+{
+	int	res = 0;
+	int	borrow;
+	resultat->size = a->size + b->size;
+	// calloc pour protecter contra les garbages values lors du stockage
+	// des valeurs additionnees.
+	resultat->digits = (int *)calloc(resultat->size, sizeof(int));
+	resultat->base = BASE;
+	if (a->sign == b->sign)
+	{	
+		if (a->sign == false)
+			resultat->sign = false;
+		else
+			resultat->sign = true;
+	}
+	else
+		resultat->sign = true;
+	for (int index = 0; index < a->size; index++)
+	{
+		borrow = 0;
+		for (int index1 = 0; index1 < b->size; index1++)
+		{
+			res = a->digits[index] * b->digits[index1] + resultat->digits[index + index1] + borrow;
+			resultat->digits[index + index1] = res % BASE;
+			borrow = res / BASE;
+		}
+		resultat->digits[index + b->size] += borrow;
+	}
+	while (resultat->size > 1 && resultat->digits[resultat->size - 1] == false)
+		resultat->size--;
 }

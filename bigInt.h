@@ -35,10 +35,13 @@ bool	initBigInt(BigInt_ptr num, const char *str);
 void	printInt(BigInt_ptr num);
 void	freeInt(BigInt_ptr num);
 /* fonctionnalites de base */
+	// Etape Une
 void	bigIntAdd(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b);
 void	bigIntSub(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b);
 bool	bigIntEgal(BigInt_ptr a, BigInt_ptr b);
 bool	bigIntLessThan(BigInt_ptr a, BigInt_ptr b);
+	// Etapte deux
+void	bigIntMult(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b);
 /* fonctionnalites utilities */
 void	bigIntSameSign(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b, bool sign);
 void	doAddSameSign(t_opp operation, BigInt_ptr a, BigInt_ptr b, BigInt_ptr res);

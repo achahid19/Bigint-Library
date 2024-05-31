@@ -37,6 +37,9 @@ int main(void)
 
 	/* ---------------------------Etape Une (DONE)------------------------ */
 
+	bigIntMult(&resultat, &nombre1, &nombre2);
+	printInt(&resultat);
+
 	freeInt(&nombre1);
 	freeInt(&nombre2);
 	freeInt(&resultat);
