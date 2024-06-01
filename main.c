@@ -40,9 +40,6 @@ int main(void)
 	bigIntMult(&resultat, &nombre1, &nombre2);
 	printInt(&resultat);
 
-	karatsuba(&resultat, &nombre1, &nombre2);
-	printInt(&resultat);
-
 	freeInt(&nombre1);
 	freeInt(&nombre2);
 	freeInt(&resultat);
