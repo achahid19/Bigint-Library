@@ -42,6 +42,12 @@ bool	bigIntEgal(BigInt_ptr a, BigInt_ptr b);
 bool	bigIntLessThan(BigInt_ptr a, BigInt_ptr b);
 	// Etapte deux
 void	bigIntMult(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b);
+void	karatsubaMult(BigInt_ptr result, BigInt_ptr x, BigInt_ptr y);
+	// Etape tois
+		// MOD
+void    bigIntMod(BigInt_ptr res, BigInt_ptr a, BigInt_ptr b);
+void 	bigIntModExp(BigInt_ptr result, BigInt_ptr base,
+			BigInt_ptr exp, BigInt_ptr mod);
 /* fonctionnalites utilities */
 void	bigIntSameSign(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b, bool sign);
 void	doAddSameSign(t_opp operation, BigInt_ptr a, BigInt_ptr b, BigInt_ptr res);

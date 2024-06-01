@@ -5,16 +5,21 @@
 */
 int main(void)
 {
-	t_BigInt nombre1, nombre2, resultat;
+	t_BigInt nombre1, nombre2, resultat, mod;
 
-    if (initBigInt(&nombre1, "00000") == false)
+    if (initBigInt(&nombre1, "50") == false)
 		return (EXIT_FAILURE);
-    if (initBigInt(&nombre2, "00000") == false)
+    if (initBigInt(&nombre2, "9") == false)
 	{
 		freeInt(&nombre1);
 		return (EXIT_FAILURE);
 	}
-	
+	if (initBigInt(&mod, "10") == false)
+	{
+		freeInt(&nombre1);
+		freeInt(&nombre2);
+		return (EXIT_FAILURE);
+	}
 	if (nombre1.digits != NULL)
     	printf("Premier Nombre: ");
    	printInt(&nombre1);
@@ -37,11 +42,29 @@ int main(void)
 
 	/* ---------------------------Etape Une (DONE)------------------------ */
 
+	printf("Mult naive: ");
 	bigIntMult(&resultat, &nombre1, &nombre2);
 	printInt(&resultat);
+
+	printf("karatsuba Mult: ");
+	karatsubaMult(&resultat, &nombre1, &nombre2);
+	printInt(&resultat);
+
+	/* ---------------------------Etape Deux (DONE)------------------------ */
+
+	printf("Mod: ");
+	bigIntMod(&resultat, &nombre1, &nombre2);
+	printInt(&resultat);
+
+	printf("ModExp: ");
+	bigIntModExp(&resultat, &nombre1, &nombre2, &mod);
+	printInt(&resultat);
+
+	/* ---------------------------Etape Trois (DONE)------------------------ */
 
 	freeInt(&nombre1);
 	freeInt(&nombre2);
 	freeInt(&resultat);
+	freeInt(&mod);
     return (EXIT_SUCCESS);
 }
