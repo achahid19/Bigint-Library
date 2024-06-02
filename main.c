@@ -62,6 +62,22 @@ int main(void)
 
 	/* ---------------------------Etape Trois (DONE)------------------------ */
 
+	t_BigInt	message, ciphertext, num1, exponent;
+
+	initBigInt(&message, "10");
+	initBigInt(&exponent, "1332");
+	initBigInt(&num1, "99");
+
+	rsaEncrypt(&ciphertext, &message, &num1, &exponent);
+	printf("encrypted message: ");
+	printInt(&ciphertext);
+
+	rsaDecrypt(&message, &ciphertext, &num1, &exponent);
+	printf("decrypted message: ");
+	printInt(&message);
+
+	/* ---------------------------BONUS (RSA)------------------------ */
+
 	freeInt(&nombre1);
 	freeInt(&nombre2);
 	freeInt(&resultat);

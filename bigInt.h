@@ -48,6 +48,12 @@ void	karatsubaMult(BigInt_ptr result, BigInt_ptr x, BigInt_ptr y);
 void    bigIntMod(BigInt_ptr res, BigInt_ptr a, BigInt_ptr b);
 void 	bigIntModExp(BigInt_ptr result, BigInt_ptr base,
 			BigInt_ptr exp, BigInt_ptr mod);
+	// BONUS
+		// RSA
+void 	rsaEncrypt(BigInt_ptr ciphertext, BigInt_ptr message,
+			BigInt_ptr e, BigInt_ptr n);
+void 	rsaDecrypt(BigInt_ptr message, BigInt_ptr ciphertext,
+			BigInt_ptr d, BigInt_ptr n);
 /* fonctionnalites utilities */
 void	bigIntSameSign(BigInt_ptr resultat, BigInt_ptr a, BigInt_ptr b, bool sign);
 void	doAddSameSign(t_opp operation, BigInt_ptr a, BigInt_ptr b, BigInt_ptr res);
